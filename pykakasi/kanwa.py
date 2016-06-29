@@ -39,7 +39,9 @@ class kanwa (object):
             table = self._jisyo_table[key]
         except:
             try:
-                table = self._jisyo_table[key]  = loads(decompress(self._kanwadict[key]))
+                # Workaround for avoid waste of memory
+                # table = self._jisyo_table[key]  = loads(decompress(self._kanwadict[key]))
+                table = loads(decompress(self._kanwadict[key]))
             except:
                 return None
         return table
